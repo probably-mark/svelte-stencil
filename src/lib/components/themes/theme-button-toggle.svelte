@@ -1,11 +1,16 @@
 
 <script lang="ts">
 
-  import { browser } from '$app/environment';
+  import { onMount } from 'svelte';
 
   let isDarkMode = true;
+  let mounted = false;
 
-  $: if (browser) {
+  onMount(() => {
+    mounted = true;
+  });
+
+  $: if (mounted) {
     document.documentElement.classList.toggle('dark', isDarkMode);
   }
 </script>
